@@ -1,62 +1,62 @@
 export const INITIAL_WORDS = [
   {
     id: "word-1",
-    word: "Resilient",
-    translation: "Dirençli, çabuk toparlanan, esnek",
-    example: "Children are often remarkably resilient in facing new challenges.",
-    level: "B2",
+    word: "Ethereal",
+    translation: "Rüya gibi, göksel, tarifsiz derecede zarif ve hafif",
+    example: "The evening twilight had an ethereal lavender glow behind the clouds.",
+    level: "C1",
     category: "Sıfat • Adjective",
-    isLearned: false,
+    isLearned: true,
     createdAt: new Date(Date.now() - 5 * 86400000).toISOString()
   },
   {
     id: "word-2",
-    word: "Serendipity",
-    translation: "Güzel tesadüf, şans eseri gelen tatlı sürpriz",
-    example: "Finding my dream book in a small roadside cafe was pure serendipity.",
-    level: "C1",
+    word: "Luminescence",
+    translation: "Işıltı, soğuk parıltı, yıldız parlaması",
+    example: "The gentle luminescence of the night sky illuminated our path.",
+    level: "B2",
     category: "İsim • Noun",
-    isLearned: true,
+    isLearned: false,
     createdAt: new Date(Date.now() - 4 * 86400000).toISOString()
   },
   {
     id: "word-3",
-    word: "Eloquent",
-    translation: "Etkili ve akıcı konuşan, beliğ",
-    example: "She gave a calm, eloquent talk by the fireplace.",
+    word: "Serendipity",
+    translation: "Güzel tesadüf, yıldızların denk getirdiği tatlı şans",
+    example: "Finding my favorite poetry notebook under the stars was serendipity.",
     level: "B2",
-    category: "Sıfat • Adjective",
-    isLearned: false,
+    category: "İsim • Noun",
+    isLearned: true,
     createdAt: new Date(Date.now() - 3 * 86400000).toISOString()
   },
   {
     id: "word-4",
-    word: "Endeavor",
-    translation: "Samimi gayret, içten çaba, girişim",
-    example: "We wish you warmth and peace in all your future endeavors.",
-    level: "B1",
-    category: "Fiil • İsim",
+    word: "Petrichor",
+    translation: "Yağmur sonrası yükselen bulut ve toprak kokusu",
+    example: "The sweet petrichor filled the air after the evening rain.",
+    level: "C2",
+    category: "İsim • Noun",
     isLearned: false,
     createdAt: new Date(Date.now() - 2 * 86400000).toISOString()
   },
   {
     id: "word-5",
-    word: "Ephemeral",
-    translation: "Geçici, anlık, tatlı bir an gibi kısa ömürlü",
-    example: "The soft morning mist over the valley was ephemeral.",
-    level: "C2",
+    word: "Halcyon",
+    translation: "Huzurlu, dingin, altın çağ gibi masalsı sakinlik",
+    example: "She recalled the halcyon days spent watching the drifting clouds.",
+    level: "B1",
     category: "Sıfat • Adjective",
     isLearned: false,
     createdAt: new Date(Date.now() - 1 * 86400000).toISOString()
   },
   {
     id: "word-6",
-    word: "Cherish",
-    translation: "Sevgiyle korumak, değer vermek, bağrına basmak",
-    example: "I cherish these peaceful evening study hours with warm tea.",
+    word: "Resilient",
+    translation: "Dirençli, her fırtınadan sonra yeniden parlayan",
+    example: "Like stars behind the darkest clouds, she remained resilient.",
     level: "A2",
-    category: "Fiil • Verb",
-    isLearned: true,
+    category: "Sıfat • Adjective",
+    isLearned: false,
     createdAt: new Date().toISOString()
   }
 ];
@@ -64,37 +64,37 @@ export const INITIAL_WORDS = [
 export const CEFR_LEVELS = [
   { 
     value: 'A1', 
-    label: 'A1 - Başlangıç', 
-    color: 'bg-emerald-50 text-emerald-800 border-emerald-200/60 dark:bg-emerald-950/40 dark:text-emerald-300 dark:border-emerald-800/40' 
+    label: 'A1 • Başlangıç', 
+    color: 'bg-pink-50 text-pink-700 border-pink-200/70 dark:bg-pink-950/40 dark:text-pink-300 dark:border-pink-800/40' 
   },
   { 
     value: 'A2', 
-    label: 'A2 - Temel', 
-    color: 'bg-teal-50 text-teal-800 border-teal-200/60 dark:bg-teal-950/40 dark:text-teal-300 dark:border-teal-800/40' 
+    label: 'A2 • Temel', 
+    color: 'bg-purple-50 text-purple-700 border-purple-200/70 dark:bg-purple-950/40 dark:text-purple-300 dark:border-purple-800/40' 
   },
   { 
     value: 'B1', 
-    label: 'B1 - Orta', 
-    color: 'bg-amber-50 text-amber-800 border-amber-200/60 dark:bg-amber-950/40 dark:text-amber-300 dark:border-amber-800/40' 
+    label: 'B1 • Orta', 
+    color: 'bg-violet-50 text-violet-700 border-violet-200/70 dark:bg-violet-950/40 dark:text-violet-300 dark:border-violet-800/40' 
   },
   { 
     value: 'B2', 
-    label: 'B2 - İyi', 
-    color: 'bg-orange-50 text-orange-800 border-orange-200/60 dark:bg-orange-950/40 dark:text-orange-300 dark:border-orange-800/40' 
+    label: 'B2 • İyi', 
+    color: 'bg-indigo-50 text-indigo-700 border-indigo-200/70 dark:bg-indigo-950/40 dark:text-indigo-300 dark:border-indigo-800/40' 
   },
   { 
     value: 'C1', 
-    label: 'C1 - İleri', 
-    color: 'bg-rose-50 text-rose-800 border-rose-200/60 dark:bg-rose-950/40 dark:text-rose-300 dark:border-rose-800/40' 
+    label: 'C1 • İleri', 
+    color: 'bg-fuchsia-50 text-fuchsia-700 border-fuchsia-200/70 dark:bg-fuchsia-950/40 dark:text-fuchsia-300 dark:border-fuchsia-800/40' 
   },
   { 
     value: 'C2', 
-    label: 'C2 - Usta', 
-    color: 'bg-stone-100 text-stone-800 border-stone-300/60 dark:bg-stone-800/60 dark:text-stone-300 dark:border-stone-700/50' 
+    label: 'C2 • Usta', 
+    color: 'bg-amber-50 text-amber-700 border-amber-200/70 dark:bg-amber-950/40 dark:text-amber-300 dark:border-amber-800/40' 
   }
 ];
 
 export const getLevelBadgeClass = (level) => {
   const found = CEFR_LEVELS.find(l => l.value === level);
-  return found ? found.color : 'bg-stone-100 text-stone-700 dark:bg-stone-800 dark:text-stone-300';
+  return found ? found.color : 'bg-purple-50 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300';
 };

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Volume2, RotateCcw, Check, Award, RefreshCw, Sparkles } from 'lucide-react';
+import { X, Volume2, RotateCcw, Check, Sparkles, RefreshCw, Star, Cloud } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { speakWord } from '../utils/speech';
 import { getLevelBadgeClass } from '../data/initialWords';
@@ -30,14 +30,15 @@ export default function FlashcardModal({
     }
   }, [isOpen, words]);
 
-  // Trigger celebration confetti on finish
+  // Trigger celebration confetti on finish (Lilac, Gold & Pink stardust)
   useEffect(() => {
     if (sessionCompleted) {
       try {
         confetti({
-          particleCount: 80,
-          spread: 60,
-          origin: { y: 0.6 }
+          particleCount: 90,
+          spread: 75,
+          origin: { y: 0.6 },
+          colors: ['#A855F7', '#EC4899', '#FBBF24', '#C084FC', '#E879F9']
         });
       } catch (e) {
         console.error(e);
@@ -76,20 +77,21 @@ export default function FlashcardModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-950/65 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="bg-[#FAF7F2] dark:bg-[#1E1B18] border border-[#EBE3D7] dark:border-[#38312B] rounded-3xl w-full max-w-xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-purple-950/65 backdrop-blur-md animate-in fade-in duration-200">
+      <div className="backdrop-blur-2xl bg-white/95 dark:bg-[#1D1735]/95 border border-purple-200/90 dark:border-purple-800/60 rounded-3xl w-full max-w-xl shadow-cloud-lg overflow-hidden flex flex-col max-h-[90vh]">
         
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[#EBE3D7] dark:border-[#2D2722]">
+        <div className="flex items-center justify-between px-6 py-4.5 border-b border-purple-100 dark:border-purple-900/40">
           <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-amber-600 animate-pulse" />
-            <h2 className="text-xs font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300">
-              Hafıza Kartları • Pratik Molası ☕
+            <span className="w-2.5 h-2.5 rounded-full bg-purple-500 animate-ping" />
+            <h2 className="text-xs font-bold uppercase tracking-wider text-purple-800 dark:text-purple-300 flex items-center gap-1.5">
+              <Cloud className="w-3.5 h-3.5" />
+              <span>Yıldız Pratiği • Flashcard Modu</span>
             </h2>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-stone-400 hover:text-stone-600 dark:hover:text-stone-200 hover:bg-stone-200/50 dark:hover:bg-stone-800/60 transition-colors"
+            className="p-1.5 rounded-xl text-purple-400 hover:text-purple-700 dark:hover:text-purple-200 hover:bg-purple-100/60 dark:hover:bg-purple-900/40 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -97,17 +99,20 @@ export default function FlashcardModal({
 
         {/* Modal Content */}
         {!sessionCompleted && currentWord ? (
-          <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+          <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between">
             {/* Progress & Counter */}
-            <div className="flex items-center justify-between text-xs text-stone-500 dark:text-stone-400 mb-3 font-medium">
-              <span>Kart {currentIndex + 1} / {studyList.length}</span>
+            <div className="flex items-center justify-between text-xs text-purple-700/80 dark:text-purple-300/80 mb-3 font-semibold">
+              <span className="flex items-center gap-1">
+                <Star className="w-3 h-3 text-purple-500" />
+                Kart {currentIndex + 1} / {studyList.length}
+              </span>
               <span>%{Math.round(((currentIndex) / studyList.length) * 100)} İlerleme</span>
             </div>
 
             {/* Progress Bar */}
-            <div className="w-full bg-stone-200/70 dark:bg-stone-800 h-1.5 rounded-full mb-6 overflow-hidden">
+            <div className="w-full bg-purple-100 dark:bg-purple-950/60 h-2 rounded-full mb-6 overflow-hidden">
               <div
-                className="bg-amber-700 dark:bg-amber-500 h-full transition-all duration-300 rounded-full"
+                className="bg-gradient-to-r from-purple-500 via-fuchsia-500 to-indigo-500 h-full transition-all duration-300 rounded-full"
                 style={{ width: `${((currentIndex + 1) / studyList.length) * 100}%` }}
               />
             </div>
@@ -123,20 +128,20 @@ export default function FlashcardModal({
                 }`}
               >
                 {/* FRONT SIDE (Word) */}
-                <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-[#FCFBF8] to-[#F7F3EB] dark:from-[#25221F] dark:via-[#221F1C] dark:to-[#1B1816] border-2 border-[#E5DDD0] dark:border-[#38312B] rounded-3xl p-6 sm:p-8 flex flex-col justify-between items-center text-center backface-hidden shadow-soft">
+                <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-purple-50/80 via-white to-fuchsia-50/60 dark:from-[#251E44] dark:via-[#1E1838] dark:to-[#17122C] border-2 border-purple-200/90 dark:border-purple-800/70 rounded-3xl p-6 sm:p-8 flex flex-col justify-between items-center text-center backface-hidden shadow-cloud">
                   <div className="w-full flex justify-between items-center">
-                    <span className={`px-2.5 py-0.5 rounded-lg text-xs font-semibold border ${getLevelBadgeClass(currentWord.level)}`}>
+                    <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold border ${getLevelBadgeClass(currentWord.level)}`}>
                       {currentWord.level}
                     </span>
                     {currentWord.category && (
-                      <span className="text-xs font-medium text-stone-400">
+                      <span className="text-xs font-semibold text-purple-500 dark:text-purple-400">
                         {currentWord.category}
                       </span>
                     )}
                   </div>
 
                   <div className="my-auto py-2">
-                    <h3 className="font-serif text-3xl sm:text-4xl font-bold text-stone-900 dark:text-stone-50 tracking-tight">
+                    <h3 className="font-display text-3xl sm:text-4xl font-black text-purple-950 dark:text-white tracking-tight">
                       {currentWord.word}
                     </h3>
                     <button
@@ -144,37 +149,37 @@ export default function FlashcardModal({
                         e.stopPropagation();
                         speakWord(currentWord.word);
                       }}
-                      className="mt-3.5 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-amber-100/80 dark:bg-amber-950/60 text-amber-900 dark:text-amber-200 hover:scale-105 active:scale-95 transition-all"
+                      className="mt-3.5 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold bg-purple-100 dark:bg-purple-900/60 text-purple-700 dark:text-purple-200 hover:scale-105 active:scale-95 transition-all shadow-sm"
                     >
                       <Volume2 className="w-3.5 h-3.5" /> Dinle
                     </button>
                   </div>
 
-                  <div className="text-xs text-stone-400 dark:text-stone-500 flex items-center gap-1.5">
+                  <div className="text-xs text-purple-400 dark:text-purple-400 flex items-center gap-1.5 font-medium">
                     <RefreshCw className="w-3 h-3 group-hover:rotate-180 transition-transform duration-500" />
-                    <span>Anlamı görmek için dokunun</span>
+                    <span>Bulutu çevirmek için dokun ☁️</span>
                   </div>
                 </div>
 
                 {/* BACK SIDE (Translation & Example) */}
-                <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-[#FBFDFB] via-white to-[#F2F8F3] dark:from-[#1D241F] dark:via-[#1B211D] dark:to-[#161C18] border-2 border-emerald-200/80 dark:border-emerald-900/50 rounded-3xl p-6 sm:p-8 flex flex-col justify-between items-center text-center backface-hidden rotate-y-180 shadow-soft">
-                  <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
-                    Türkçe Anlamı
+                <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-emerald-50/80 via-white to-purple-50/60 dark:from-[#172528] dark:via-[#191F33] dark:to-[#1C1733] border-2 border-emerald-200/90 dark:border-emerald-800/60 rounded-3xl p-6 sm:p-8 flex flex-col justify-between items-center text-center backface-hidden rotate-y-180 shadow-cloud">
+                  <span className="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
+                    <Sparkles className="w-3 h-3 animate-twinkle" /> Türkçe Anlamı
                   </span>
 
                   <div className="my-auto py-2">
-                    <h3 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900 dark:text-stone-50 mb-3">
+                    <h3 className="font-display text-2xl sm:text-3xl font-black text-purple-950 dark:text-white mb-2.5">
                       {currentWord.translation}
                     </h3>
                     {currentWord.example && (
-                      <p className="font-serif italic text-xs sm:text-sm text-stone-600 dark:text-stone-300 bg-white/80 dark:bg-[#201D1A]/80 p-3.5 rounded-xl border border-stone-200/60 dark:border-stone-700/50 max-w-md mx-auto leading-relaxed">
+                      <p className="text-xs sm:text-sm text-purple-800/80 dark:text-purple-200/80 bg-purple-50/70 dark:bg-[#151128]/70 p-3.5 rounded-2xl border border-purple-100 dark:border-purple-900/50 max-w-md mx-auto leading-relaxed italic">
                         "{currentWord.example}"
                       </p>
                     )}
                   </div>
 
-                  <div className="text-xs text-stone-400 dark:text-stone-500">
-                    Ön yüze dönmek için dokunun
+                  <div className="text-xs text-purple-400 dark:text-purple-400 font-medium">
+                    Ön yüze dönmek için dokun ✨
                   </div>
                 </div>
               </div>
@@ -184,46 +189,46 @@ export default function FlashcardModal({
             <div className="grid grid-cols-2 gap-3 mt-6">
               <button
                 onClick={() => handleNext(false)}
-                className="flex items-center justify-center gap-2 py-3 px-4 rounded-2xl text-xs sm:text-sm font-semibold bg-[#F5EFE6] text-stone-700 hover:bg-[#EDE5DA] dark:bg-[#28231F] dark:text-stone-300 dark:hover:bg-[#322C27] border border-[#E5DDD0] dark:border-[#38312B] transition-all active:scale-[0.98]"
+                className="flex items-center justify-center gap-2 py-3 px-4 rounded-2xl text-xs sm:text-sm font-bold bg-fuchsia-50 text-fuchsia-800 hover:bg-fuchsia-100 dark:bg-fuchsia-950/40 dark:text-fuchsia-300 dark:hover:bg-fuchsia-950/70 border border-fuchsia-200/80 dark:border-fuchsia-900/50 transition-all active:scale-[0.98]"
               >
-                <RotateCcw className="w-4 h-4 text-stone-500" />
-                <span>Tekrar Edelim 🌿</span>
+                <RotateCcw className="w-4 h-4" />
+                <span>Bulutlara Bırak ☁️</span>
               </button>
 
               <button
                 onClick={() => handleNext(true)}
-                className="flex items-center justify-center gap-2 py-3 px-4 rounded-2xl text-xs sm:text-sm font-semibold bg-emerald-700 hover:bg-emerald-800 text-emerald-50 shadow-sm transition-all active:scale-[0.98]"
+                className="flex items-center justify-center gap-2 py-3 px-4 rounded-2xl text-xs sm:text-sm font-bold bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white shadow-cloud active:scale-[0.98] transition-all"
               >
                 <Check className="w-4 h-4" />
-                <span>Hafızamda! ☕</span>
+                <span>Yıldızlandı! ✨</span>
               </button>
             </div>
           </div>
         ) : (
           /* Completion Screen */
           <div className="p-8 text-center flex flex-col items-center justify-center my-auto">
-            <div className="w-16 h-16 rounded-3xl bg-amber-100 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 flex items-center justify-center shadow-soft mb-4">
-              <Award className="w-8 h-8" />
+            <div className="w-16 h-16 rounded-3xl bg-gradient-to-tr from-purple-500 to-fuchsia-500 text-white flex items-center justify-center shadow-cloud mb-4 animate-bounce">
+              <Sparkles className="w-8 h-8" />
             </div>
 
-            <h3 className="font-serif text-2xl font-bold text-stone-900 dark:text-stone-50 mb-2">
-              Pratik Tamamlandı ☕
+            <h3 className="font-display text-2xl font-black text-purple-950 dark:text-white mb-2">
+              Gökyüzü Işıldıyor! ✨
             </h3>
-            <p className="text-sm text-stone-600 dark:text-stone-400 max-w-sm mb-6 font-light leading-relaxed">
-              Bu dinlendirici oturumda toplam <strong className="text-stone-900 dark:text-white font-semibold">{studyList.length}</strong> kelime gözden geçirdin ve <strong className="text-emerald-700 dark:text-emerald-400 font-semibold">{learnedInSession}</strong> yeni kelimeyi hafızana mühürledin.
+            <p className="text-sm text-purple-700/80 dark:text-purple-300/80 max-w-sm mb-6 font-light leading-relaxed">
+              Bu büyülü oturumda <strong className="text-purple-950 dark:text-white font-bold">{studyList.length}</strong> kelimeyi bulutların arasından geçirdin ve <strong className="text-emerald-600 dark:text-emerald-400 font-bold">{learnedInSession}</strong> yeni kelimeyi yıldız gibi parlatmayı başardın!
             </p>
 
             <div className="flex items-center gap-3 w-full max-w-xs">
               <button
                 onClick={handleRestart}
-                className="flex-1 inline-flex items-center justify-center gap-2 py-3 rounded-2xl text-xs sm:text-sm font-semibold bg-stone-900 hover:bg-black dark:bg-stone-100 dark:hover:bg-white text-stone-100 dark:text-stone-900 shadow-sm transition-all active:scale-[0.98]"
+                className="flex-1 inline-flex items-center justify-center gap-2 py-3 rounded-2xl text-xs sm:text-sm font-bold bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-700 hover:to-fuchsia-700 text-white shadow-cloud transition-all active:scale-[0.98]"
               >
                 <RefreshCw className="w-4 h-4" />
                 <span>Yeniden Başla</span>
               </button>
               <button
                 onClick={onClose}
-                className="flex-1 inline-flex items-center justify-center py-3 rounded-2xl text-xs sm:text-sm font-medium bg-[#F5EFE6] hover:bg-[#EDE5DA] dark:bg-[#25211E] dark:hover:bg-[#2F2A26] text-stone-700 dark:text-stone-300 transition-colors"
+                className="flex-1 inline-flex items-center justify-center py-3 rounded-2xl text-xs sm:text-sm font-semibold bg-purple-100 hover:bg-purple-200/80 dark:bg-purple-950/70 dark:hover:bg-purple-900/70 text-purple-800 dark:text-purple-200 transition-colors"
               >
                 Kapat
               </button>

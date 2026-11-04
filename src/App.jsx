@@ -6,10 +6,10 @@ import WordCard from './components/WordCard';
 import WordModal from './components/WordModal';
 import FlashcardModal from './components/FlashcardModal';
 import { INITIAL_WORDS } from './data/initialWords';
-import { Coffee, Plus, SearchX } from 'lucide-react';
+import { Sparkles, Plus, SearchX, Cloud, Star } from 'lucide-react';
 
-const STORAGE_KEY = 'vocabcraft_words_cozy_v1';
-const THEME_KEY = 'vocabcraft_theme_cozy_v1';
+const STORAGE_KEY = 'vocabcraft_words_starlight_v1';
+const THEME_KEY = 'vocabcraft_theme_starlight_v1';
 
 export default function App() {
   // Theme state (Dark/Light)
@@ -137,7 +137,7 @@ export default function App() {
   };
 
   const handleDeleteWord = (id) => {
-    if (window.confirm('Bu kelimeyi defterden silmek istediğinize emin misiniz?')) {
+    if (window.confirm('Bu kelimeyi gökyüzünden silmek istediğinize emin misiniz?')) {
       setWords(prev => prev.filter(w => w.id !== id));
     }
   };
@@ -159,7 +159,7 @@ export default function App() {
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(words, null, 2));
     const downloadAnchor = document.createElement('a');
     downloadAnchor.setAttribute("href", dataStr);
-    downloadAnchor.setAttribute("download", `vocabcraft_cozy_backup_${new Date().toISOString().slice(0,10)}.json`);
+    downloadAnchor.setAttribute("download", `vocabcraft_starlight_backup_${new Date().toISOString().slice(0,10)}.json`);
     document.body.appendChild(downloadAnchor);
     downloadAnchor.click();
     downloadAnchor.remove();
@@ -173,19 +173,36 @@ export default function App() {
         const imported = JSON.parse(e.target.result);
         if (Array.isArray(imported)) {
           setWords(imported);
-          alert(`${imported.length} adet kelime deftere eklendi!`);
+          alert(`${imported.length} adet kelime gökyüzüne eklendi! ✨`);
         } else {
-          alert('Geçersiz JSON dosyası. Liste bir dizi şeklinde olmalıdır.');
+          alert('Geçersiz JSON dosyası. Kelime listesi dizi olmalıdır.');
         }
       } catch (err) {
-        alert('Dosya okunurken bir hata oluştu: ' + err.message);
+        alert('Dosya yüklenirken bir hata oluştu: ' + err.message);
       }
     };
     reader.readAsText(file);
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FBF9F5] dark:bg-[#181614] text-stone-800 dark:text-stone-200 transition-colors duration-300">
+    <div className="min-h-screen relative flex flex-col bg-[#F8F5FD] dark:bg-[#130F24] text-purple-950 dark:text-purple-100 transition-colors duration-300">
+      
+      {/* Background Floating Cloud & Star Atmospheric Blobs */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        {/* Soft Lavender Cloud Blob Top Left */}
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-purple-300/25 dark:bg-purple-900/20 rounded-full blur-3xl animate-float-slow" />
+        {/* Soft Fuchsia Cloud Blob Top Right */}
+        <div className="absolute top-1/4 -right-20 w-80 h-80 bg-fuchsia-300/20 dark:bg-fuchsia-900/15 rounded-full blur-3xl animate-float" />
+        {/* Soft Indigo Cloud Blob Bottom Center */}
+        <div className="absolute -bottom-20 left-1/3 w-[32rem] h-[32rem] bg-indigo-300/20 dark:bg-indigo-950/25 rounded-full blur-3xl animate-float-slow" />
+
+        {/* Subtle Decorative Stars */}
+        <div className="absolute top-20 left-[12%] text-purple-300/60 dark:text-purple-400/30 animate-twinkle text-lg">✦</div>
+        <div className="absolute top-44 right-[15%] text-fuchsia-300/60 dark:text-fuchsia-400/30 animate-twinkle-delay-1 text-sm">✧</div>
+        <div className="absolute top-[60%] left-[8%] text-indigo-300/50 dark:text-indigo-400/20 animate-twinkle-delay-2 text-base">✦</div>
+        <div className="absolute bottom-28 right-[10%] text-purple-300/60 dark:text-purple-400/30 animate-twinkle text-xl">⋆</div>
+      </div>
+
       {/* Navbar */}
       <Navbar
         darkMode={darkMode}
@@ -195,7 +212,7 @@ export default function App() {
       />
 
       {/* Main Container */}
-      <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+      <main className="relative z-10 flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
         {/* Stats Header */}
         <StatsBar
           totalCount={totalCount}
@@ -235,21 +252,21 @@ export default function App() {
           </div>
         ) : (
           /* Empty State */
-          <div className="text-center py-16 bg-white dark:bg-[#23201D] border border-[#EDE8E0] dark:border-[#332D29] rounded-3xl p-8 shadow-soft">
-            <div className="w-14 h-14 rounded-2xl bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 flex items-center justify-center mx-auto mb-3">
+          <div className="text-center py-16 backdrop-blur-md bg-white/80 dark:bg-[#1C1733]/80 border border-purple-100 dark:border-purple-900/50 rounded-3xl p-8 shadow-cloud">
+            <div className="w-16 h-16 rounded-3xl bg-purple-100/90 dark:bg-purple-950/80 text-purple-600 dark:text-purple-300 flex items-center justify-center mx-auto mb-3.5 shadow-sm">
               {searchQuery ? (
-                <SearchX className="w-6 h-6" />
+                <SearchX className="w-7 h-7" />
               ) : (
-                <Coffee className="w-6 h-6" />
+                <Cloud className="w-7 h-7 animate-float" />
               )}
             </div>
-            <h3 className="font-serif text-xl font-bold text-stone-800 dark:text-white mb-1.5">
-              {searchQuery ? 'Sonuç Bulunamadı' : 'Defter Henüz Boş'}
+            <h3 className="font-display text-xl font-bold text-purple-950 dark:text-white mb-1.5">
+              {searchQuery ? 'Yıldız Bulunamadı' : 'Gökyüzü Henüz Sessiz'}
             </h3>
-            <p className="text-sm text-stone-500 dark:text-stone-400 max-w-sm mx-auto mb-6 font-light leading-relaxed">
+            <p className="text-sm text-purple-700/70 dark:text-purple-300/70 max-w-sm mx-auto mb-6 font-light leading-relaxed">
               {searchQuery
-                ? `"${searchQuery}" ifadesine uygun bir not bulunamadı. Filtreleri temizlemeyi deneyin.`
-                : 'Bir fincan kahve eşliğinde ilk kelimeni ekleyerek öğrenme yolculuğuna başla.'}
+                ? `"${searchQuery}" aramasına uygun bir kelime bulunamadı. Filtreleri temizlemeyi deneyin.`
+                : 'Gökyüzüne ilk kelimeni ekleyerek kendi yıldız takımını oluşturmaya başla! ✨'}
             </p>
             {searchQuery ? (
               <button
@@ -258,7 +275,7 @@ export default function App() {
                   setSelectedLevel('ALL');
                   setStatusFilter('all');
                 }}
-                className="px-4 py-2 rounded-xl text-xs font-semibold bg-[#F5EFE6] hover:bg-[#EDE5DA] dark:bg-stone-800 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 transition-colors"
+                className="px-4 py-2 rounded-2xl text-xs font-bold bg-purple-100 hover:bg-purple-200/80 dark:bg-purple-950/80 dark:hover:bg-purple-900/70 text-purple-800 dark:text-purple-200 transition-colors"
               >
                 Filtreleri Temizle
               </button>
@@ -268,10 +285,10 @@ export default function App() {
                   setEditingWord(null);
                   setIsWordModalOpen(true);
                 }}
-                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-2xl text-xs font-semibold bg-stone-900 hover:bg-black dark:bg-stone-100 dark:hover:bg-white text-stone-100 dark:text-stone-900 shadow-sm transition-all"
+                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-2xl text-xs font-bold bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-700 hover:to-fuchsia-700 text-white shadow-cloud transition-all"
               >
                 <Plus className="w-4 h-4" />
-                <span>İlk Kelimeni Ekle</span>
+                <span>İlk Yıldızını Ekle</span>
               </button>
             )}
           </div>
@@ -298,8 +315,8 @@ export default function App() {
       />
 
       {/* Footer */}
-      <footer className="mt-auto py-8 border-t border-[#EDE8E0] dark:border-[#2D2824] text-center text-xs text-stone-400 dark:text-stone-500 font-light">
-        <p>VocabCraft ☕ • Sıcak ve huzurlu bir kelime öğrenme deneyimi</p>
+      <footer className="relative z-10 mt-auto py-8 border-t border-purple-100/80 dark:border-purple-900/40 text-center text-xs text-purple-400 dark:text-purple-400 font-light">
+        <p>VocabCraft ✨☁️ • Bulutların üzerinde ve yıldızların ışığında kelime defteri</p>
       </footer>
     </div>
   );

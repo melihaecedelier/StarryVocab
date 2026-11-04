@@ -9,26 +9,32 @@ export default {
     extend: {
       fontFamily: {
         sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-        serif: ['Lora', 'Georgia', 'serif'],
+        display: ['Outfit', 'sans-serif'],
       },
       colors: {
-        cozy: {
-          bg: '#FBF9F5',
-          card: '#FFFFFF',
-          border: '#EDE8E0',
-          darkBg: '#181614',
-          darkCard: '#23201D',
-          darkBorder: '#36302B',
-          matcha: '#688F6D',
-          terracotta: '#D97746',
-          caramel: '#C27838',
-          honey: '#E59B3B',
-          cream: '#F4EFE6'
+        lila: {
+          50: '#FAF7FE',
+          100: '#F3ECFC',
+          200: '#E7D8F9',
+          300: '#D5BEF4',
+          400: '#BD9AEB',
+          500: '#A474DF',
+          600: '#8C52CF',
+          700: '#753AB5',
+          800: '#603095',
+          900: '#50297B',
+        },
+        night: {
+          bg: '#130F24',
+          card: '#1D1735',
+          cardHover: '#241E40',
+          border: '#2E2552',
         }
       },
       boxShadow: {
-        'soft': '0 4px 20px -2px rgba(120, 100, 80, 0.06)',
-        'soft-lg': '0 10px 30px -4px rgba(120, 100, 80, 0.08)',
+        'cloud': '0 10px 30px -5px rgba(164, 116, 223, 0.12)',
+        'cloud-lg': '0 20px 40px -8px rgba(164, 116, 223, 0.18)',
+        'star': '0 0 15px rgba(192, 132, 252, 0.4)',
       }
     },
   },

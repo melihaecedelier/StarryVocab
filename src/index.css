@@ -6,6 +6,9 @@
   body {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   }
+  h1, h2, h3, h4, .font-display {
+    font-family: 'Outfit', sans-serif;
+  }
 }
 
 /* 3D Flip Card Effect */
@@ -26,7 +29,49 @@
   transform: rotateY(180deg);
 }
 
-/* Cozy Custom Scrollbar */
+/* Twinkling Stars Animation */
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.25;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+.animate-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.animate-twinkle-delay-1 {
+  animation: twinkle 3.5s ease-in-out 1s infinite;
+}
+
+.animate-twinkle-delay-2 {
+  animation: twinkle 4s ease-in-out 2s infinite;
+}
+
+/* Gentle Floating Cloud Animation */
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: translateY(-8px) translateX(4px);
+  }
+}
+
+.animate-float {
+  animation: floatGentle 6s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: floatGentle 9s ease-in-out 2s infinite;
+}
+
+/* Custom Lilac Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -37,14 +82,14 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #E0D7CA;
+  background: #D5BEF4;
   border-radius: 9999px;
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background: #3D352F;
+  background: #3B2E68;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #CBBFAe;
+  background: #BD9AEB;
 }
