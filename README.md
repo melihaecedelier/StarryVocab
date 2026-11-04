@@ -10,6 +10,7 @@ Modern JavaScript (React + Vite + Tailwind CSS) ile geliştirilmiş, **LocalStor
 
 ### ✨ Öne Çıkan Özellikler
 
+* **✨ Rüya Gibi Görsel Tasarım (Dreamy Lilac, Bulutlar & Yıldızlar):** Pastel leylak, lavanta ve alacakaranlık moru tonları; arka planda süzülen yumuşak bulutlar ve parıldayan minik yıldız animasyonları.
 * **📊 Canlı İstatistikler & İlerleme Çubuğu:** Toplam kelime sayısı, öğrenilenler yüzdesi ve pratik bekleyen kelimelerin dinamik takibi.
 * **🔊 Sesli Telaffuz (Web Speech API):** Her kelimenin yanında bulunan ses butonuna tıklanarak İngilizce anadilde seslendirme dinleme.
 * **🃏 3D Flashcard Çalışma Modu:**
