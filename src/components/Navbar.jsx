@@ -22,11 +22,11 @@ export default function Navbar({ darkMode, setDarkMode, onExport, onImport }) {
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-display font-bold text-xl sm:text-2xl tracking-tight bg-gradient-to-r from-purple-700 via-fuchsia-600 to-indigo-600 dark:from-purple-300 dark:via-fuchsia-300 dark:to-indigo-300 bg-clip-text text-transparent">
-                VocabCraft
+              <span className="font-display font-extrabold text-xl sm:text-2xl tracking-tight bg-gradient-to-r from-purple-700 via-fuchsia-600 to-indigo-600 dark:from-purple-300 dark:via-fuchsia-300 dark:to-indigo-300 bg-clip-text text-transparent">
+                StarryVocab
               </span>
               <span className="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 rounded-full bg-purple-100/80 text-purple-700 dark:bg-purple-950/80 dark:text-purple-300 border border-purple-200/60 dark:border-purple-800/60">
-                ✨ starlight
+                ✨ celestial
               </span>
             </div>
             <p className="text-xs text-purple-600/70 dark:text-purple-300/60 hidden sm:block font-light">

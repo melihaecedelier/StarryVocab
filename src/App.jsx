@@ -316,7 +316,7 @@ export default function App() {
 
       {/* Footer */}
       <footer className="relative z-10 mt-auto py-8 border-t border-purple-100/80 dark:border-purple-900/40 text-center text-xs text-purple-400 dark:text-purple-400 font-light">
-        <p>VocabCraft ✨☁️ • Bulutların üzerinde ve yıldızların ışığında kelime defteri</p>
+        <p>StarryVocab ✨☁️ • Bulutların üzerinde ve yıldızların ışığında kelime defteri</p>
       </footer>
     </div>
   );

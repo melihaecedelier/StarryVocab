@@ -1,12 +1,12 @@
-# 🧠 VocabCraft — Akıllı Kelime Defteri & Flashcard Uygulaması
+# ✨ StarryVocab — Bulutlar & Yıldızlı Kelime Defteri
 
-Modern JavaScript (React + Vite + Tailwind CSS) ile geliştirilmiş, **LocalStorage** tabanlı, sesli telaffuz destekli ve interaktif flashcard (hafıza kartı) çalışma moduna sahip yeni nesil kelime öğrenme ve pratik platformu.
+Modern JavaScript (React + Vite + Tailwind CSS) ile geliştirilmiş, **LocalStorage** tabanlı, sesli telaffuz destekli ve bulutlar üzerinde interaktif flashcard (hafıza kartı) çalışma moduna sahip yeni nesil kelime öğrenme ve pratik platformu.
 
 ---
 
 ## 📌 Proje Genel Bakışı
 
-**VocabCraft**, dil öğrenenlerin yeni kelimeleri CEFR seviyelerine (A1 - C2) göre kategorize ederek kaydetmelerini, Web Speech API ile anında doğru telaffuzlarını dinlemelerini ve 3D çevrilebilir flashcard modunda hafızalarını test etmelerini sağlar. Veritabanı ihtiyacı olmadan tüm veriler tarayıcının **LocalStorage** hafızasında güvenle saklanır; sayfa yenilense veya kapatılsa dahi veriler kaybolmaz.
+**StarryVocab**, dil öğrenenlerin yeni kelimeleri CEFR seviyelerine (A1 - C2) göre kategorize ederek kaydetmelerini, Web Speech API ile anında doğru telaffuzlarını dinlemelerini ve 3D çevrilebilir flashcard modunda hafızalarını test etmelerini sağlar. Veritabanı ihtiyacı olmadan tüm veriler tarayıcının **LocalStorage** hafızasında güvenle saklanır; sayfa yenilense veya kapatılsa dahi veriler kaybolmaz.
 
 ### ✨ Öne Çıkan Özellikler
 
@@ -121,8 +121,8 @@ Projenin `vite.config.js` dosyasında `base: './'` ayarlandığı için Vercel, 
 
 ## 📋 Proje Teslim Bilgileri
 
-* **GitHub Deposu (Public):** `https://github.com/<kullanici-adiniz>/vocabcraft`
-* **Canlı Demo (Live URL):** `https://<proje-adiniz>.vercel.app`
+* **GitHub Deposu (Public):** `https://github.com/<kullanici-adiniz>/starryvocab`
+* **Canlı Demo (Live URL):** `https://starryvocab.vercel.app`
 * **Geliştirici:** Ad Soyad / Öğrenci No
 
 ---
