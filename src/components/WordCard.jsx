@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Volume2, CheckCircle2, Circle, Edit3, Trash2, Quote } from 'lucide-react';
+import { Volume2, CheckCircle, Circle, Edit3, Trash2 } from 'lucide-react';
 import { getLevelBadgeClass } from '../data/initialWords';
 import { speakWord } from '../utils/speech';
 
@@ -19,10 +19,10 @@ export default function WordCard({
 
   return (
     <div
-      className={`group relative bg-white dark:bg-slate-900 border rounded-2xl p-5 shadow-sm transition-all duration-200 hover:shadow-md flex flex-col justify-between ${
+      className={`group relative rounded-2xl p-5 sm:p-6 transition-all duration-300 flex flex-col justify-between border ${
         word.isLearned
-          ? 'border-emerald-200/80 dark:border-emerald-950/60 bg-emerald-50/20 dark:bg-emerald-950/10'
-          : 'border-slate-200/80 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
+          ? 'bg-[#F9FCF9] dark:bg-[#1C221D] border-emerald-200/70 dark:border-emerald-900/40 shadow-soft'
+          : 'bg-white dark:bg-[#23201D] border-[#EDE8E0] dark:border-[#332D29] hover:border-[#DDD4C7] dark:hover:border-[#423A34] shadow-soft hover:shadow-soft-lg'
       }`}
     >
       <div>
@@ -31,7 +31,7 @@ export default function WordCard({
           <div className="flex items-center gap-1.5 flex-wrap">
             {/* Level Badge */}
             <span
-              className={`px-2 py-0.5 rounded-md text-[11px] font-bold border ${getLevelBadgeClass(
+              className={`px-2.5 py-0.5 rounded-lg text-[11px] font-semibold border ${getLevelBadgeClass(
                 word.level
               )}`}
             >
@@ -40,25 +40,25 @@ export default function WordCard({
 
             {/* Category / Part of Speech */}
             {word.category && (
-              <span className="px-2 py-0.5 rounded-md text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+              <span className="px-2 py-0.5 rounded-lg text-[11px] font-medium bg-[#F5EFE6] dark:bg-[#1C1917] text-stone-600 dark:text-stone-400">
                 {word.category}
               </span>
             )}
           </div>
 
           {/* Edit & Delete Buttons */}
-          <div className="flex items-center gap-1 opacity-80 group-hover:opacity-100 transition-opacity">
+          <div className="flex items-center gap-1 opacity-60 group-hover:opacity-100 transition-opacity">
             <button
               onClick={() => onEdit(word)}
-              title="Kelimeyi Düzenle"
-              className="p-1.5 rounded-lg text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              title="Notu Düzenle"
+              className="p-1.5 rounded-lg text-stone-400 hover:text-amber-800 dark:hover:text-amber-300 hover:bg-[#F5EFE6] dark:hover:bg-[#2D2824] transition-colors"
             >
               <Edit3 className="w-3.5 h-3.5" />
             </button>
             <button
               onClick={() => onDelete(word.id)}
               title="Kelimeyi Sil"
-              className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              className="p-1.5 rounded-lg text-stone-400 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors"
             >
               <Trash2 className="w-3.5 h-3.5" />
             </button>
@@ -66,17 +66,17 @@ export default function WordCard({
         </div>
 
         {/* Word and Sound Button */}
-        <div className="flex items-center gap-2 mb-1.5">
-          <h3 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+        <div className="flex items-baseline gap-2.5 mb-2">
+          <h3 className="font-serif text-2xl font-bold tracking-tight text-stone-900 dark:text-stone-50 group-hover:text-amber-800 dark:group-hover:text-amber-300 transition-colors">
             {word.word}
           </h3>
           <button
             onClick={handleSpeak}
-            title="Sesli Telaffuz Dinle (Web Speech API)"
-            className={`p-1.5 rounded-full transition-transform active:scale-90 ${
+            title="Sesli Telaffuz Dinle"
+            className={`p-1.5 rounded-full transition-all active:scale-90 ${
               isSpeaking
-                ? 'bg-indigo-600 text-white scale-110 animate-pulse'
-                : 'text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/60'
+                ? 'bg-amber-700 text-white scale-110 shadow-sm'
+                : 'text-amber-700 dark:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-950/40'
             }`}
           >
             <Volume2 className="w-4 h-4" />
@@ -84,42 +84,42 @@ export default function WordCard({
         </div>
 
         {/* Translation */}
-        <p className="text-sm font-semibold text-slate-700 dark:text-slate-200 mb-3">
+        <p className="text-sm font-medium text-stone-700 dark:text-stone-200 mb-3 leading-relaxed">
           {word.translation}
         </p>
 
-        {/* Example Sentence */}
+        {/* Example Sentence with cozy bookish styling */}
         {word.example && (
-          <div className="relative pl-3 border-l-2 border-indigo-200 dark:border-indigo-900/60 py-1 my-2 text-xs text-slate-600 dark:text-slate-400 italic bg-slate-50/50 dark:bg-slate-800/30 rounded-r-lg pr-2">
+          <div className="font-serif italic text-xs sm:text-[13px] text-stone-600 dark:text-stone-300 bg-[#FAF7F2] dark:bg-[#1A1816] p-3 rounded-xl border border-[#EDE5DA] dark:border-[#2D2722] my-2 leading-relaxed">
             "{word.example}"
           </div>
         )}
       </div>
 
       {/* Footer: Learned Status Toggle */}
-      <div className="pt-3 mt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between">
+      <div className="pt-3.5 mt-3 border-t border-[#F2ECE3] dark:border-[#2D2824] flex items-center justify-between">
         <button
           onClick={() => onToggleLearned(word.id)}
-          className={`flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-xl transition-all ${
+          className={`flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-xl transition-all ${
             word.isLearned
-              ? 'bg-emerald-100/70 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 hover:bg-emerald-200/70'
-              : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+              ? 'bg-emerald-100/70 text-emerald-900 dark:bg-emerald-950/60 dark:text-emerald-300 hover:bg-emerald-200/80'
+              : 'bg-[#F5EFE6] dark:bg-[#1C1917] text-stone-600 dark:text-stone-400 hover:bg-[#EDE5DA] dark:hover:bg-[#2A2522]'
           }`}
         >
           {word.isLearned ? (
             <>
-              <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-              <span>Öğrenildi</span>
+              <CheckCircle className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+              <span>Hafızada</span>
             </>
           ) : (
             <>
-              <Circle className="w-4 h-4 text-slate-400" />
+              <Circle className="w-3.5 h-3.5 text-stone-400" />
               <span>Öğreniyorum</span>
             </>
           )}
         </button>
 
-        <span className="text-[10px] text-slate-400">
+        <span className="text-[11px] text-stone-400 font-light">
           {new Date(word.createdAt).toLocaleDateString('tr-TR', {
             month: 'short',
             day: 'numeric'

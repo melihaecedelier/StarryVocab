@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle2, RotateCcw, Layers, PlayCircle, Plus } from 'lucide-react';
+import { BookMarked, Sparkles, Plus, Play, CheckCircle } from 'lucide-react';
 
 export default function StatsBar({
   totalCount,
@@ -15,11 +15,16 @@ export default function StatsBar({
       {/* Top Banner & Quick Actions */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-            Kelime Havuzun
+          <div className="flex items-center gap-2 mb-1">
+            <span className="text-sm font-medium text-amber-700 dark:text-amber-400">
+              ☕ Bugün de yeni bir şeyler öğrenelim
+            </span>
+          </div>
+          <h1 className="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-stone-900 dark:text-stone-50">
+            Kişisel Kelime Günlüğün
           </h1>
-          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
-            Yeni kelimeler ekleyin, sesli telaffuzları dinleyin ve flashcard ile hafızanızı tazeleyin.
+          <p className="text-sm text-stone-500 dark:text-stone-400 mt-1 font-light">
+            Sakin bir tempoda kelimeleri kaydet, sesli dinle ve hafıza kartlarıyla keyifle tekrar et.
           </p>
         </div>
 
@@ -28,12 +33,12 @@ export default function StatsBar({
           <button
             onClick={onStartStudy}
             disabled={totalCount === 0}
-            className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white shadow-md shadow-indigo-500/20 active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-2xl font-semibold text-sm bg-gradient-to-r from-amber-700 via-orange-700 to-amber-800 hover:from-amber-800 hover:to-orange-800 text-amber-50 shadow-sm shadow-amber-900/10 active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <PlayCircle className="w-4 h-4" />
-            <span>Pratik Yap</span>
+            <Play className="w-4 h-4 fill-amber-50" />
+            <span>Pratik Molası</span>
             {unlearnedCount > 0 && (
-              <span className="px-1.5 py-0.5 text-xs font-bold bg-white/20 rounded-md">
+              <span className="px-1.5 py-0.5 text-xs font-bold bg-black/20 rounded-md">
                 {unlearnedCount}
               </span>
             )}
@@ -42,10 +47,10 @@ export default function StatsBar({
           {/* Add Word Button */}
           <button
             onClick={onOpenAddModal}
-            className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm bg-emerald-600 hover:bg-emerald-700 text-white shadow-md shadow-emerald-500/20 active:scale-[0.98] transition-all"
+            className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-2xl font-semibold text-sm bg-stone-800 hover:bg-stone-900 dark:bg-stone-200 dark:hover:bg-white text-stone-100 dark:text-stone-900 shadow-sm active:scale-[0.98] transition-all"
           >
             <Plus className="w-4 h-4" />
-            <span>Yeni Kelime</span>
+            <span>Kelime Ekle</span>
           </button>
         </div>
       </div>
@@ -53,65 +58,65 @@ export default function StatsBar({
       {/* Stats Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {/* Total Words */}
-        <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-4 sm:p-5 shadow-sm transition-all hover:border-slate-300 dark:hover:border-slate-700">
+        <div className="bg-white dark:bg-[#23201D] border border-[#EDE8E0] dark:border-[#332D29] rounded-2xl p-4 sm:p-5 shadow-soft transition-all hover:border-stone-300 dark:hover:border-stone-700">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-              Toplam Kelime
+            <span className="text-xs font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400">
+              Kayıtlı Kelime
             </span>
-            <div className="p-2 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400">
-              <Layers className="w-4 h-4" />
+            <div className="p-2 rounded-xl bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300">
+              <BookMarked className="w-4 h-4" />
             </div>
           </div>
-          <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-black text-slate-900 dark:text-white">
+          <div className="mt-2.5 flex items-baseline gap-2">
+            <span className="font-serif text-3xl font-bold text-stone-900 dark:text-stone-50">
               {totalCount}
             </span>
-            <span className="text-xs text-slate-500">kayıtlı</span>
+            <span className="text-xs text-stone-500 font-light">kelime defterde</span>
           </div>
         </div>
 
         {/* Learned Words */}
-        <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-4 sm:p-5 shadow-sm transition-all hover:border-slate-300 dark:hover:border-slate-700">
+        <div className="bg-white dark:bg-[#23201D] border border-[#EDE8E0] dark:border-[#332D29] rounded-2xl p-4 sm:p-5 shadow-soft transition-all hover:border-stone-300 dark:hover:border-stone-700">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+            <span className="text-xs font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
               Öğrenilenler
             </span>
-            <div className="p-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400">
-              <CheckCircle2 className="w-4 h-4" />
+            <div className="p-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300">
+              <CheckCircle className="w-4 h-4" />
             </div>
           </div>
-          <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-black text-slate-900 dark:text-white">
+          <div className="mt-2.5 flex items-baseline gap-2">
+            <span className="font-serif text-3xl font-bold text-stone-900 dark:text-stone-50">
               {learnedCount}
             </span>
-            <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400">
-              %{percent}
+            <span className="text-xs font-bold text-emerald-700 dark:text-emerald-400">
+              %{percent} hafızada
             </span>
           </div>
-          {/* Progress bar */}
-          <div className="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full mt-3 overflow-hidden">
+          {/* Soft Matcha Progress bar */}
+          <div className="w-full bg-stone-100 dark:bg-stone-800 h-1.5 rounded-full mt-3 overflow-hidden">
             <div
-              className="bg-emerald-500 h-full rounded-full transition-all duration-500"
+              className="bg-emerald-600/80 dark:bg-emerald-500/80 h-full rounded-full transition-all duration-500"
               style={{ width: `${percent}%` }}
             />
           </div>
         </div>
 
         {/* Unlearned / In-Practice */}
-        <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-4 sm:p-5 shadow-sm transition-all hover:border-slate-300 dark:hover:border-slate-700">
+        <div className="bg-white dark:bg-[#23201D] border border-[#EDE8E0] dark:border-[#332D29] rounded-2xl p-4 sm:p-5 shadow-soft transition-all hover:border-stone-300 dark:hover:border-stone-700">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-400">
-              Tekrar Edilecek
+            <span className="text-xs font-semibold uppercase tracking-wider text-amber-700 dark:text-amber-400">
+              Tekrar Bekleyen
             </span>
-            <div className="p-2 rounded-xl bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400">
-              <RotateCcw className="w-4 h-4" />
+            <div className="p-2 rounded-xl bg-orange-50 dark:bg-orange-950/40 text-orange-700 dark:text-orange-300">
+              <Sparkles className="w-4 h-4" />
             </div>
           </div>
-          <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-black text-slate-900 dark:text-white">
+          <div className="mt-2.5 flex items-baseline gap-2">
+            <span className="font-serif text-3xl font-bold text-stone-900 dark:text-stone-50">
               {unlearnedCount}
             </span>
-            <span className="text-xs text-slate-500">pratik bekliyor</span>
+            <span className="text-xs text-stone-500 font-light">pratik bekliyor</span>
           </div>
         </div>
       </div>

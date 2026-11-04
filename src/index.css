@@ -25,3 +25,26 @@
 .rotate-y-180 {
   transform: rotateY(180deg);
 }
+
+/* Cozy Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E0D7CA;
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #3D352F;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #CBBFAe;
+}

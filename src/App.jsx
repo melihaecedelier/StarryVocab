@@ -6,13 +6,13 @@ import WordCard from './components/WordCard';
 import WordModal from './components/WordModal';
 import FlashcardModal from './components/FlashcardModal';
 import { INITIAL_WORDS } from './data/initialWords';
-import { BookOpen, Plus, SearchX } from 'lucide-react';
+import { Coffee, Plus, SearchX } from 'lucide-react';
 
-const STORAGE_KEY = 'vocabcraft_words_v1';
-const THEME_KEY = 'vocabcraft_theme_v1';
+const STORAGE_KEY = 'vocabcraft_words_cozy_v1';
+const THEME_KEY = 'vocabcraft_theme_cozy_v1';
 
 export default function App() {
-  // Theme state
+  // Theme state (Dark/Light)
   const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem(THEME_KEY);
     if (saved !== null) return JSON.parse(saved);
@@ -137,7 +137,7 @@ export default function App() {
   };
 
   const handleDeleteWord = (id) => {
-    if (window.confirm('Bu kelimeyi silmek istediğinize emin misiniz?')) {
+    if (window.confirm('Bu kelimeyi defterden silmek istediğinize emin misiniz?')) {
       setWords(prev => prev.filter(w => w.id !== id));
     }
   };
@@ -159,7 +159,7 @@ export default function App() {
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(words, null, 2));
     const downloadAnchor = document.createElement('a');
     downloadAnchor.setAttribute("href", dataStr);
-    downloadAnchor.setAttribute("download", `vocabcraft_backup_${new Date().toISOString().slice(0,10)}.json`);
+    downloadAnchor.setAttribute("download", `vocabcraft_cozy_backup_${new Date().toISOString().slice(0,10)}.json`);
     document.body.appendChild(downloadAnchor);
     downloadAnchor.click();
     downloadAnchor.remove();
@@ -173,9 +173,9 @@ export default function App() {
         const imported = JSON.parse(e.target.result);
         if (Array.isArray(imported)) {
           setWords(imported);
-          alert(`${imported.length} adet kelime başarıyla içe aktarıldı!`);
+          alert(`${imported.length} adet kelime deftere eklendi!`);
         } else {
-          alert('Geçersiz JSON formatı. Kelime listesi bir dizi olmalıdır.');
+          alert('Geçersiz JSON dosyası. Liste bir dizi şeklinde olmalıdır.');
         }
       } catch (err) {
         alert('Dosya okunurken bir hata oluştu: ' + err.message);
@@ -185,7 +185,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 transition-colors">
+    <div className="min-h-screen flex flex-col bg-[#FBF9F5] dark:bg-[#181614] text-stone-800 dark:text-stone-200 transition-colors duration-300">
       {/* Navbar */}
       <Navbar
         darkMode={darkMode}
@@ -195,7 +195,7 @@ export default function App() {
       />
 
       {/* Main Container */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
         {/* Stats Header */}
         <StatsBar
           totalCount={totalCount}
@@ -222,7 +222,7 @@ export default function App() {
 
         {/* Words Grid or Empty State */}
         {filteredWords.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {filteredWords.map(word => (
               <WordCard
                 key={word.id}
@@ -235,21 +235,21 @@ export default function App() {
           </div>
         ) : (
           /* Empty State */
-          <div className="text-center py-16 bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-3xl p-8">
-            <div className="w-14 h-14 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-500 flex items-center justify-center mx-auto mb-3">
+          <div className="text-center py-16 bg-white dark:bg-[#23201D] border border-[#EDE8E0] dark:border-[#332D29] rounded-3xl p-8 shadow-soft">
+            <div className="w-14 h-14 rounded-2xl bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 flex items-center justify-center mx-auto mb-3">
               {searchQuery ? (
                 <SearchX className="w-6 h-6" />
               ) : (
-                <BookOpen className="w-6 h-6" />
+                <Coffee className="w-6 h-6" />
               )}
             </div>
-            <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-1">
-              {searchQuery ? 'Sonuç Bulunamadı' : 'Henüz Kelime Eklenmemiş'}
+            <h3 className="font-serif text-xl font-bold text-stone-800 dark:text-white mb-1.5">
+              {searchQuery ? 'Sonuç Bulunamadı' : 'Defter Henüz Boş'}
             </h3>
-            <p className="text-sm text-slate-500 dark:text-slate-400 max-w-sm mx-auto mb-5">
+            <p className="text-sm text-stone-500 dark:text-stone-400 max-w-sm mx-auto mb-6 font-light leading-relaxed">
               {searchQuery
-                ? `"${searchQuery}" aramasına uygun bir kelime bulunamadı. Filtreleri temizlemeyi deneyin.`
-                : 'Hemen yeni bir kelime ekleyerek kişisel kelime defterinizi oluşturmaya başlayın!'}
+                ? `"${searchQuery}" ifadesine uygun bir not bulunamadı. Filtreleri temizlemeyi deneyin.`
+                : 'Bir fincan kahve eşliğinde ilk kelimeni ekleyerek öğrenme yolculuğuna başla.'}
             </p>
             {searchQuery ? (
               <button
@@ -258,7 +258,7 @@ export default function App() {
                   setSelectedLevel('ALL');
                   setStatusFilter('all');
                 }}
-                className="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
+                className="px-4 py-2 rounded-xl text-xs font-semibold bg-[#F5EFE6] hover:bg-[#EDE5DA] dark:bg-stone-800 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 transition-colors"
               >
                 Filtreleri Temizle
               </button>
@@ -268,7 +268,7 @@ export default function App() {
                   setEditingWord(null);
                   setIsWordModalOpen(true);
                 }}
-                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm transition-all"
+                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-2xl text-xs font-semibold bg-stone-900 hover:bg-black dark:bg-stone-100 dark:hover:bg-white text-stone-100 dark:text-stone-900 shadow-sm transition-all"
               >
                 <Plus className="w-4 h-4" />
                 <span>İlk Kelimeni Ekle</span>
@@ -298,8 +298,8 @@ export default function App() {
       />
 
       {/* Footer */}
-      <footer className="mt-auto py-6 border-t border-slate-200 dark:border-slate-800 text-center text-xs text-slate-400 dark:text-slate-500">
-        <p>VocabCraft • Modern JavaScript & Yapay Zeka Destekli Geliştirme Projesi</p>
+      <footer className="mt-auto py-8 border-t border-[#EDE8E0] dark:border-[#2D2824] text-center text-xs text-stone-400 dark:text-stone-500 font-light">
+        <p>VocabCraft ☕ • Sıcak ve huzurlu bir kelime öğrenme deneyimi</p>
       </footer>
     </div>
   );
