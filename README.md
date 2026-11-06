@@ -25,15 +25,6 @@ Modern JavaScript (React + Vite + Tailwind CSS) ile geliştirilmiş, **LocalStor
 * **🌓 Koyu / Açık Tema (Dark Mode):** Göz yormayan şık karanlık mod desteği (tercih LocalStorage'da tutulur).
 * **💾 Veri Yedekleme & İçe Aktarma:** Tüm kelime havuzunu tek tıkla `.json` dosyası olarak indirme ve farklı cihazlara yükleyebilme.
 
----
-
-## 📸 Ekran Görüntüsü
-
-> Projeyi çalıştırdıktan sonra tarayıcınızdan bir ekran görüntüsü alıp `public/screenshot.png` olarak projeye kaydedebilir ve bu alanda görüntüleyebilirsiniz.
-
-![VocabCraft Ekran Görüntüsü](./public/screenshot.png)
-
----
 
 ## 🛠️ Kullanılan Teknolojiler
 
@@ -47,14 +38,14 @@ Modern JavaScript (React + Vite + Tailwind CSS) ile geliştirilmiş, **LocalStor
 | **Veri Saklama** | **Browser LocalStorage** | Sunucusuz, kalıcı istemci taraflı veri yönetimi |
 | **Ses Motoru** | **Web Speech API** | Tarayıcı yerel metin okuma (Text-to-Speech) |
 
----
+
 
 ## 🤖 Yapay Zeka (AI) İle Geliştirme Süreci
 
 Bu proje geliştirilirken **Gemini / Antigravity** yapay zeka asistanından projenin her aşamasında aktif bir pair-programmer olarak faydalanılmıştır:
 
 ### 1. Fikir ve Planlama Aşaması
-* **AI Desteği:** Yönergedeki gereksinimler doğrultusunda 3 farklı proje konsepti türetildi. En işlevsel ve görsel olarak zengin olan *VocabCraft* fikri seçildi.
+* **AI Desteği:** Yönergedeki gereksinimler doğrultusunda işlevsel ve görsel olarak zengin olan *VocabCraft* fikri seçildi.
 * **Örnek İstemi:** *"React ve LocalStorage kullanarak jüriyi etkileyecek, modern bir kelime takip uygulaması için veri modeli ve bileşen hiyerarşisi oluştur."*
 * **Çıktı:** `Word` veri şeması (id, word, translation, example, level, isLearned, createdAt) ve UI ekran planı belirlendi.
 
@@ -64,8 +55,6 @@ Bu proje geliştirilirken **Gemini / Antigravity** yapay zeka asistanından proj
 
 ### 3. Stil, UX ve Hata Ayıklama
 * **AI Desteği:** Tailwind CSS ile açık/koyu mod geçişi yapılandırıldı. Windows ve Vite derleme uyumluluğundaki symlink çözümleri (`resolve.preserveSymlinks`) AI yardımıyla giderildi.
-
----
 
 ## 🚀 Kurulum ve Yerel Çalıştırma
 
@@ -100,7 +89,7 @@ Projeyi bilgisayarınızda çalıştırmak için aşağıdaki adımları izleyin
    ```
    Çıktı `dist/` klasöründe hazır hale gelecektir.
 
----
+
 
 ## 🌐 Canlıya Alma (Deployment) Rehberi
 
@@ -117,7 +106,7 @@ Projenin `vite.config.js` dosyasında `base: './'` ayarlandığı için Vercel, 
 2. **"Add new site" -> "Import an existing project"** adımlarını seçip GitHub deponuzu bağlayın.
 3. Build command: `npm run build`, Publish directory: `dist` olarak bırakın ve **Deploy**'a tıklayın.
 
----
+
 
 ## 📋 Proje Teslim Bilgileri
 
@@ -125,6 +114,4 @@ Projenin `vite.config.js` dosyasında `base: './'` ayarlandığı için Vercel, 
 * **Canlı Demo (Live URL):** `https://starryvocab.vercel.app`
 * **Geliştirici:** Ad Soyad / Öğrenci No
 
----
 
-*Bu proje, modern web teknolojileri ve yapay zeka destekli yazılım geliştirme pratikleri uygulanarak hazırlanmıştır.*
